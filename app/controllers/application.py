@@ -12,7 +12,7 @@ class Application():
         }
 
         self.__model= DataRecord()
-        self.__current_loginusername= None
+        self.__current_username= None
 
 
     def render(self,page,parameter=None):
@@ -66,3 +66,9 @@ class Application():
         session_id = self.get_session_id()
         if session_id:
             self.__model.logout(session_id)
+
+    def register_user(self, username, password, email):
+        if self.__model.getUserSessionId(username) is not None:
+            raise ValueError("Nome de usuário já existe.")
+
+        self.__model.book(username, password, email)

@@ -1,1 +1,17 @@
-[{"username": "Amanda", "password": "amanda123"},{"username": "Isaque", "password": "vasco123"}]
+[
+    {
+        "username": "mandicrz",
+        "password": "amanda123",
+        "email": "amandacruzlima.ac@gmail.com"
+    },
+    {
+        "username": "mandicrz",
+        "password": "amanda123",
+        "email": "amandacruzlima.ac@gmail.com"
+    },
+    {
+        "username": "Penes Valdo",
+        "password": "123123",
+        "email": "penesvaldo@yahoo.com.br"
+    }
+]
