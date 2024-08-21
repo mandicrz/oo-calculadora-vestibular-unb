@@ -1,0 +1,24 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3A4137;
+    height: 60px;
+    
+}
+
+.header_text{
+
+    font-family: '';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    color: #FFFFFF;
+    padding: 16px;
+
+
+}

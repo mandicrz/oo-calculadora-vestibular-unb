@@ -11,18 +11,14 @@ ctl = Application()
 def serve_static(filepath):
     return static_file(filepath, root='./app/static')
 
-@app.route('/helper')
-def helper():
-    return ctl.render('helper')
-
-@app.route('/pagina', methods=['GET'])
-@app.route('/pagina/<username>', methods=['GET'])
+@app.route('/home', methods=['GET'])
+@app.route('/home/<username>', methods=['GET'])
 def action_pagina(username=None):
     session_id = ctl.get_session_id()
     if session_id:
         current_username = ctl._model.getUserName(session_id)
         if current_username == username:
-            return ctl.render('pagina', username)
+            return ctl.render('home', username)
     
     return redirect('/')
 
@@ -43,7 +39,7 @@ def home_post():
         if control is not None:
             session_id, username = control
             response.set_cookie('session_id', session_id, httponly=True, secure=True, max_age=3600)
-            redirect(f'/pagina/{username}')
+            redirect(f'/home/{username}')
         else:
             return redirect('/')
 

@@ -1,13 +1,11 @@
 from app.controllers.db.dataRecord import DataRecord
 from bottle import template, request, response
-
-
 class Application():
 
     def __init__(self):
 
         self.pages = {
-            'pagina': self.pagina,
+            'home': self.home,
             'login': self.login
         }
 
@@ -16,7 +14,7 @@ class Application():
 
 
     def render(self,page,parameter=None):
-        content = self.pages.get(page, self.helper)
+        content = self.pages.get(page, self.login)
         if not parameter:
             return content()
         else:
@@ -26,23 +24,18 @@ class Application():
     def get_session_id(self):
         return request.get_cookie('session_id')
 
-
-    def helper(self):
-        return template('app/views/html/helper')
-
-
     def login(self):
         return template('app/views/html/login')
 
 
-    def pagina(self,username=None):
+    def home(self,username=None):
         if self.is_authenticated(username):
             session_id= self.get_session_id()
             user = self._model.getCurrentUser(session_id)
-            return template('app/views/html/pagina', \
+            return template('app/views/html/home', \
             transfered=True, current_user=user)
         else:
-            return template('app/views/html/pagina', \
+            return template('app/views/html/home', \
             transfered=False)
 
 
