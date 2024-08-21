@@ -18,10 +18,13 @@ def helper():
 @app.route('/pagina', methods=['GET'])
 @app.route('/pagina/<username>', methods=['GET'])
 def action_pagina(username=None):
-    if not username:
-        return ctl.render('pagina')
-    else:
-        return ctl.render('pagina',username)
+    session_id = ctl.get_session_id()
+    if session_id:
+        current_username = ctl._model.getUserName(session_id)
+        if current_username == username:
+            return ctl.render('pagina', username)
+    
+    return redirect('/')
 
 
 @app.route('/', method='GET')
@@ -78,7 +81,7 @@ def home_post():
 def logout():
     ctl.logout_user()
     response.delete_cookie('session_id')
-    redirect('/helper')
+    redirect('/')
 
 if __name__ == '__main__':
 

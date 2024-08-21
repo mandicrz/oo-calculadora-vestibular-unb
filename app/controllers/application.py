@@ -1,5 +1,5 @@
 from app.controllers.db.dataRecord import DataRecord
-from bottle import template, redirect, request
+from bottle import template, request, response
 
 
 class Application():
@@ -11,8 +11,8 @@ class Application():
             'login': self.login
         }
 
-        self.__model= DataRecord()
-        self.__current_username= None
+        self._model= DataRecord()
+        self._current_username = None
 
 
     def render(self,page,parameter=None):
@@ -38,7 +38,7 @@ class Application():
     def pagina(self,username=None):
         if self.is_authenticated(username):
             session_id= self.get_session_id()
-            user = self.__model.getCurrentUser(session_id)
+            user = self._model.getCurrentUser(session_id)
             return template('app/views/html/pagina', \
             transfered=True, current_user=user)
         else:
@@ -48,27 +48,28 @@ class Application():
 
     def is_authenticated(self, username):
         session_id = self.get_session_id()
-        current_username = self.__model.getUserName(session_id)
+        current_username = self._model.getUserName(session_id)
         return username == current_username
 
 
     def authenticate_user(self, username, password):
-        session_id = self.__model.checkUser(username, password)
+        session_id = self._model.checkUser(username, password)
         if session_id:
             self.logout_user()
-            self.__current_username= self.__model.getUserName(session_id)
+            self._current_username= self._model.getUserName(session_id)
             return session_id, username
         return None
 
 
     def logout_user(self):
-        self.__current_username= None
+        self._current_username= None
         session_id = self.get_session_id()
         if session_id:
-            self.__model.logout(session_id)
+            self._model.logout(session_id)
+            response.delete_cookie('session_id')
 
     def register_user(self, username, password, email):
-        if self.__model.getUserSessionId(username) is not None:
+        if self._model.getUserSessionId(username) is not None:
             raise ValueError("Nome de usuário já existe.")
 
-        self.__model.book(username, password, email)
+        self._model.book(username, password, email)
