@@ -14,7 +14,7 @@ class DataRecord():
     def read(self):
         try:
             with open("app/controllers/db/user_accounts.json", "r") as arquivo_json:
-                # Verifica se o arquivo está vazio
+                # verifica se o arquivo está vazio
                 content = arquivo_json.read().strip()
                 if not content:
                     self.__user_accounts = []
@@ -30,8 +30,11 @@ class DataRecord():
             json.dump(user_data, arquivo_json, indent=4)
 
     def book(self,username,password, email):
-        if self.getUserSessionId(username) is not None:
-            raise ValueError("Username already exists.")
+        if any(user.username == username for user in self.__user_accounts):
+            raise ValueError("Nome de usuario ja existe.")
+        
+        if any(user.email == email for user in self.__user_accounts):
+            raise ValueError("Email ja esta em uso.")
         
         new_user = UserAccount(username, password, email)
         self.__user_accounts.append(new_user)

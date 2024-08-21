@@ -59,7 +59,7 @@ def home_post():
             ctl.register_user(username, password, email)
             return redirect('/')
         except ValueError as e:
-            return f"Erro: {e}"
+            return redirect ('/')
 
     
 # @app.route('/register', method='POST')
