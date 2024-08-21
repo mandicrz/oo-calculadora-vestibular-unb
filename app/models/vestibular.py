@@ -83,8 +83,9 @@ class Vestibular():
 
 # cachorro = Vestibular()
 
-# for i in cachorro.grupo:
-#     print(i)
+# for i in cachorro.notaCorte:
+
+#     print(i[21])
     
 
 

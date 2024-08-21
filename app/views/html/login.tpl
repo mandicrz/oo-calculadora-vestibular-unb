@@ -2,39 +2,67 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/324b71f187.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../static/css/login.css">
+
+    <script src="../../static/js/login.js" defer></script>
     <title>login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="/" method="post">
-        <input type="hidden" name="action" value="login">
-        <label for="username">Nome:</label>
-        <input id="username" name="username" type="text" required /><br>
+    <main>
+        <div class="login-container" id="login-container">
+            <div class="form-container">
+                <form action="/" method="post" class="form form-login">
+                    <h2 class="form-title">Entrar com</h2>
+                    <div class="form-input-container">
+                        <input type="hidden" name="action" value="login">
+                        <input id="username" name="username" type="text" class="form-input" placeholder="usuario" required />
 
-        <label for="password">Senha:</label>
-        <input id="password" name="password" type="password" required /><br>
+                        <input id="password" name="password" type="password" class="form-input" placeholder="senha" required />
+                    </div>
+                    <a href="#" class="form-link">Esqueceu a senha?</a>
+                    <input value="Login" type="submit" class="form-button />
+                    <p class="mobile-text">
+                        Não tem conta?
+                        <a href="#" id="open-register-mobile">Registre-se</a>
+                    </p>
+                </form>
+                <form action="/" method="post" class="form form-register">
+                    <h2 class="form-title">Criar Conta</h2>
+                    <div class="form-input-container">
+                        <input type="hidden" name="action" value="register">
+                        <input id="email" name="email" type="text" class="form-input" placeholder="Email" required />
 
-        <input value="Login" type="submit" />
-    </form>
-    <form action="/logout" method="post">
-        <button type="submit">Logout</button>
-    </form>
-    
-    <h1>Cadastro</h1>
-    <form action="/" method="post">
-        <input type="hidden" name="action" value="register">
-        <label for="email">Email:</label>
-        <input id="email" name="email" type="text" required /><br>
+                        <input id="username" name="username" type="text" class="form-input" placeholder="Usuario" required />
 
-        <label for="username">Nome:</label>
-        <input id="username" name="username" type="text" required /><br>
-
-        <label for="password">Senha:</label>
-        <input id="password" name="password" type="password" required /><br>
-
-        <input value="Cadastro" type="submit" />
-    </form>
-    
+                        <input id="password" name="password" type="password" class="form-input" placeholder="senha"required />
+                    </div>
+                    <input value="Cadastro" type="submit" class="form-button"/>
+                    <p class="mobile-text">
+                        Já tem conta?
+                        <a href="#" id="open-login-mobile">Login</a>
+                    </p>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <h2 class="form-title form-title-light">Já tem conta?</h2>
+                    <p class="form-text">Para entrar na nossa plataforma faça login com suas informações</p>
+                    <button class="form-button form-button-light" id="open-login">Entrar</button>
+                </div>
+                <div class="overlay">
+                    <h2 class="form-title form-title-light">Olá Aluno!</h2>
+                    <p class="form-text">Cadastre-se e comece a usar a nossa plataforma on-line</p>
+                    <button class="form-button form-button-light" id="open-register">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </main> 
 </body>
 </html>
