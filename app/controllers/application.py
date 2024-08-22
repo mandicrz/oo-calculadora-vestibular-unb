@@ -27,7 +27,6 @@ class Application():
     def login(self):
         return template('app/views/html/login')
 
-
     def home(self,username=None):
         if self.is_authenticated(username):
             session_id= self.get_session_id()

@@ -22,10 +22,13 @@ def action_pagina(username=None):
     
     return redirect('/')
 
-
 @app.route('/', method='GET')
 def login():
     return ctl.render('login')
+
+@app.route('/home', method='GET')
+def home():
+    return ctl.render('home')
 
 @app.route('/', method='POST')
 def home_post():
