@@ -9,6 +9,8 @@ ctl = Application()
 
 @app.route('/static/<filepath:path>')
 def serve_static(filepath):
+    if filepath == '/' or not filepath:
+        filepath = 'login'
     return static_file(filepath, root='./app/static')
 
 @app.route('/home', methods=['GET'])

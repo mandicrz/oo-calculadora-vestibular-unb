@@ -49,7 +49,6 @@ p {
 }
 
 .icon-button {
-    background-color: transparent;
     border: none;
     border-radius: 50%;
     height: 60px;
@@ -59,12 +58,9 @@ p {
     justify-content: center;
     align-items: center;
     margin-right: 25px;
+
 }
 
-.icon-button img {
-    max-height: 120%;
-    max-width: 120%;
-}
 .intro {
     text-align: center;
     margin: 20px;
