@@ -21,13 +21,14 @@
         </nav>
     </header>
 
+    % if transfered:
     <main class="main-content">
         <section class="intro">
-            <h2 class="intro-title">Bem vindo(a),</h2>
+            <h2 class="intro-title">Bem vindo(a), {{current_user.username}}</h2>
             <p class="intro-text">Essa é uma calculadora destinada aos estudantes que irão prestar o vestibular da UnB</p>
             <h3 class="intro-subtitle">Explore nossas funcionalidades:</h3>
         </section>
-
+            
         <section class="features">
             <div class="feature-item">
                 <a href="argumento.html" class="feature-button">Calcular argumento bruto</a>
@@ -85,5 +86,7 @@
             </section>
         </div>
     </main>
+
+    %end
 </body>
 </html>
