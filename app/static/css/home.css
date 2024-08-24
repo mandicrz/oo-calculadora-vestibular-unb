@@ -30,6 +30,7 @@ p {
     align-items: center;
     height: 50px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .header-title {
@@ -45,22 +46,27 @@ p {
 
 .nav-icons {
     display: flex;
-    gap: 5px;
+    gap: 20px;
+    align-items: center;
+    width: -20px;
+    height: -40px;
+    transform: scale(0.65);
 }
 
 .icon-button {
     border: none;
     border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    cursor: pointer;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-right: 25px;
-
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
 }
 
+.icon-button img {
+    max-height: 120%;
+    max-width: 120%;
+}
 .intro {
     text-align: center;
     margin: 20px;
@@ -140,6 +146,7 @@ p {
     justify-content: space-evenly;
     padding: 30px;
     background-color: #525b4e3b;
+    
 }
 
 .faq,
