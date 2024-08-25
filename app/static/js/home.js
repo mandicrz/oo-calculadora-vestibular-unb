@@ -13,3 +13,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+document.addEventListener('click', function(event) {
+    const userMenu = document.querySelector('.user-menu');
+    const userMenuContent = document.querySelector('.user-menu-content');
+    const isClickInside = userMenu.contains(event.target);
+    
+    if (isClickInside) {
+        userMenuContent.style.display = userMenuContent.style.display === 'block' ? 'none' : 'block';
+    } else {
+        userMenuContent.style.display = 'none';
+    }
+});

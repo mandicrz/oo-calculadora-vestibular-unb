@@ -6,7 +6,7 @@
     background-color: 3A4137;
 } */
 
-body {
+body{
     font-family: "Montagu Slab", serif;
     background-color: #d9d9d9;
     margin: 0;
@@ -47,26 +47,66 @@ p {
 .nav-icons {
     display: flex;
     gap: 20px;
-    align-items: center;
-    width: -20px;
-    height: -40px;
-    transform: scale(0.65);
 }
 
 .icon-button {
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 45px;
+    width: 45px;
     cursor: pointer;
-    text-decoration: none;
 }
 
 .icon-button img {
     max-height: 120%;
     max-width: 120%;
+    display: block;
 }
+
+/* .user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-menu-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.user-menu-content a, 
+.user-menu-content button {
+    color: black;
+    padding: 12px 15px;
+
+    text-decoration: none;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-family: "Montagu Slab", serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.user-menu:hover .user-menu-content {
+    display: block;
+}
+
+.user-menu-content a:hover, 
+.user-menu-content button:hover {
+    background-color: #525b4e3b;;
+}
+ */
+
 .intro {
     text-align: center;
     margin: 20px;
