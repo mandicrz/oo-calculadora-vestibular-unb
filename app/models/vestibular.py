@@ -81,11 +81,30 @@
 #         return argumento_final_gp_1,argumento_final_gp_2
     
 
-# # cachorro = Vestibular()
+# class Vestibulando():
 
-# # for i in cachorro.notaCorte:
+#     def __init__(self):
+#         self.vestibular= Vestibular()
+#         self.cota= ""
 
-# #     print(i[21])
+#         self.acertos_ta_estg =0
+#         self.erros_ta_estg=0
+#         self.acertos_tb_estg=0
+#         self.acertos_tc_estg=0
+#         self.erros_tc_estg=0
+        
+#         self.acertos_ta_parte_2=0
+#         self.erros_ta_parte_2=0
+#         self.acertos_tb_parte_2=0
+#         self.acertos_tc_parte_2=0
+#         self.erros_tc_parte_2=0
+
+#         self.acertos_ta_parte_3=0
+#         self.erros_ta_parte_3=0
+#         self.acertos_tb_parte_3=0
+#         self.acertos_tc_parte_3=0
+#         self.erros_tc_parte_3=0
+
     
 
 
