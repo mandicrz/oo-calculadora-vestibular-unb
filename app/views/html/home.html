@@ -3,41 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/home.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap" rel="stylesheet">
+    <title>Calculadora Vestibular Tradicional UnB</title>
+    <link rel="stylesheet" href="../../static/css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
+    <script src="../../static/js/index.js" defer></script>
+    
 </head>
 <body>
-    <nav class="navbar">
-        <div class="calTitle">
-            <span class="calTitle1">Calculadora Vestibular Tradicional UnB</span>
-        </div>
-        <div class="buttons">
-            <img class="homeButtons" src="../img/dark_mode.png" alt="">
-            <img class="homeButtons" src="../img/Home.png" alt="">
-            <img class="homeButtons" src="../img/account_circle.png" alt="">
-        </div>
-    </nav>
+    <header class="header">
+        <h1 class="header-title">Calculadora Vestibular Tradicional UnB</h1>
+        <nav class="header-nav">
+            <div class="nav-icons">
+                <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="../../static/img/dark_mode.png" alt=""></a>
+                <a href="./home.html" class="icon-button"><img src="../../static/img/Home.png" alt=""></a>
+                <div class="user-menu">
+                    <a href="#" class="icon-button"><img src="../../static/img/user.png" alt=""></a>
+                    <div class="user-menu-content">
+                        <a href="#">Editar informações</a>
+                        <form id="logout" action="/logout" method="POST">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </div>
+                </div>   
+            </div>
+        </nav>
+    </header>
 
-    <div class="homeOptions">
-        <div class="options">Calcular argumento</div>
-        <div class="options">Nota de corte</div>
-        <div class="options">Argumentos salvos</div>
-        <div class="options">Verificar se passou</div>
-    </div>
+    % if transfered:
+    <main class="main-content">
+        <section class="intro">
+            <h2 class="intro-title">Bem vindo(a), {{current_user.username}}</h2>
+            <p class="intro-text">Essa é uma calculadora destinada aos estudantes que irão prestar o vestibular da UnB</p>
+            <h3 class="intro-subtitle">Explore nossas funcionalidades:</h3>
+        </section>
+            
+        <section class="features">
+            <div class="feature-item">
+                <a href="argumento.html" class="feature-button">Calcular argumento bruto</a>
+            </div>
+            <div class="feature-item">
+                <a href="notas_corte.html" class="feature-button">Notas de corte</a>
+            </div>
+            <div class="feature-item">
+                <a href="argumento_salvo.html" class="feature-button">Argumentos salvos</a>
+            </div>
+            <div class="feature-item">
+                <a href="passou.html" class="feature-button">Verificar se passou</a>
+            </div>
+        </section>
 
-    <div class="about">
-        <div class="howWorks">
-            <h4 class="howWorksTitle">Como funciona?</h4>
-            <div class="howWorksSpanDiv"><span>Title</span></div>
-            <div class="howWorksSpanDiv"><span>Title</span></div>
-            <div class="howWorksSpanDiv"><span>Title</span></div>
-            <div class="howWorksSpanDiv"><span>Title</span></div>
-            <div class="howWorksSpanDiv"><span>Title</span></div>
+        <div class="info-section">
+            <section class="faq">
+                <h3 class="faq-title">dúvidas gerais</h3>
+                <div class="faq-item">
+                    <h4 class="faq-question">Title <span class="arrow">▼</span></h4>
+                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 class="faq-question">Title
+                        <span class="arrow">▼</span>
+                    </h4>
+                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 class="faq-question">Title
+                        <span class="arrow">▼</span>
+                    </h4>
+                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 class="faq-question">Title
+                        <span class="arrow">▼</span>
+                    </h4>
+                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                </div>
+                
+                
+            </section>
+
+            <section class="about">
+                <h3 class="about-title">sobre nós</h3>
+                <div class="about-item">
+                    <div class="circle"></div>
+                    <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="about-item">
+                    <div class="circle"></div>
+                    <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </section>
         </div>
-        <div class="aboutUs">
-            <h4>Sobre nós</h4>
-        </div>
-    </div>
+    </main>
+    %end
+
+    <!-- <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form> -->
+
 </body>
 </html>
