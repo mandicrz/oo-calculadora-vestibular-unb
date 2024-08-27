@@ -6,12 +6,12 @@ class Application():
 
         self.pages = {
             'home': self.home,
-            'login': self.login
+            'login': self.login,
+            'calcular-argumento': self.calcular_argumento
         }
 
         self._model= DataRecord()
         self._current_username = None
-
 
     def render(self,page,parameter=None):
         content = self.pages.get(page, self.login)
@@ -19,7 +19,6 @@ class Application():
             return content()
         else:
             return content(parameter)
-
 
     def get_session_id(self):
         return request.get_cookie('session_id')
@@ -65,3 +64,6 @@ class Application():
             raise ValueError("Nome de usuário já existe.")
 
         self._model.book(username, password, email)
+        
+    def calcular_argumento(self):
+        return template('app/views/html/calcular-argumento')

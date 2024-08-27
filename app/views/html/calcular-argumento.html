@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Vestibular Tradicional UnB</title>
+    <link rel="stylesheet" href="../../static/css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
+    <script src="../../static/js/index.js" defer></script>
+    
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">Calculadora Vestibular Tradicional UnB</h1>
+        <nav class="header-nav">
+            <div class="nav-icons">
+                <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="../../static/img/dark_mode.png" alt=""></a>
+                <a href="./home.html" class="icon-button"><img src="../../static/img/Home.png" alt=""></a>
+                <div class="user-menu">
+                    <a href="#" class="icon-button"><img src="../../static/img/user.png" alt=""></a>
+                    <div class="user-menu-content">
+                        <a href="#">Editar informações</a>
+                        <form id="logout" action="/logout" method="POST">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </div>
+                </div>   
+            </div>
+        </nav>
+    </header>
+
+    <form action="/calcular-argumento" method="POST"></form>
+        <div class="container">
+            <div class="section">
+                <h2>Parte 1 | Estrangeira</h2>
+                <label>Acertos tipo A</label>
+                <input type="number" name="acertos_ta_estg">
+                <label>Erros tipo A</label>
+                <input type="number" name="erros_ta_estg">
+                <label>Acertos tipo <B></B></label>
+                <input type="number" name="acertos_tb_estg">
+                <label>Erros tipo B</label>
+                <input type="number" name="erros_tb_estg">
+                <label>Acertos tipo C</label>
+                <input type="number" name="acertos_tc_estg">
+                <label>Erros tipo C</label>
+                <input type="number" name="erros_tc_estg">
+                <label>Acertos tipo D</label>
+                <input type="number" name="acertos_td_estg">
+                
+                <label>Língua Estrangeira</label>
+                <select name="lingua_estrangeira">
+                    <option value="ingles">Inglês</option>
+                    <option value="espanhol">Espanhol</option>
+                    <option value="frances">Francês</option>
+                </select>
+            </div>
+        
+            <div class="section">
+                <h2>Parte 2 | Humanas</h2>
+                <label>Acertos tipo A</label>
+                <input type="number" name="acertos_ta_parte_2">
+                <label>Erros tipo A</label>
+                <input type="number" name="erros_ta_parte_2">
+                <label>Acertos tipo B</B></label>
+                <input type="number" name="acertos_tb_parte_2">
+                <label>Erros tipo B</label>
+                <input type="number" name="erros_tb_parte_2">
+                <label>Acertos tipo C</label>
+                <input type="number" name="acertos_tc_parte_2">
+                <label>Erros tipo C</label>
+                <input type="number" name="erros_tc_parte_2">
+                <label>Acertos tipo D</label>
+                <input type="number" name="acertos_td_parte_2">
+                <label>Nota da Redação</label>
+                <input type="number" name="notaRedacao">
+            </div>
+        
+            <div class="section">
+                <h2>Parte 3 | Exatas</h2>
+                <label>Acertos tipo A</label>
+                <input type="number" name="acertos_ta_parte_3">
+                <label>Erros tipo A</label>
+                <input type="number" name="erros_ta_parte_3">
+                <label>Acertos tipo <B></B></label>
+                <input type="number" name="acertos_tb_parte_3">
+                <label>Erros tipo B</label>
+                <input type="number" name="erros_tb_parte_3">
+                <label>Acertos tipo C</label>
+                <input type="number" name="acertos_tc_parte_3">
+                <label>Erros tipo C</label>
+                <input type="number" name="erros_tc_parte_3">
+                <label>Acertos tipo D</label>
+                <input type="number" name="acertos_td_parte_3">
+            </div>
+        </div>
+
+        <button type="submit" class="submit-button">Calcular</button>
+
+    </form>
+    
+    %if transfered
+    <div class="result-container">
+        <p>O seus argumentos são:</p>
+        <div class="result">Grupo 1: {{resultado}} e Grupo 2: {{resultado2}} </div>
+    </div>
+        
+    %end
