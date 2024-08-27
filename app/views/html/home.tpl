@@ -15,11 +15,15 @@
         <nav class="header-nav">
             <div class="nav-icons">
                 <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="../../static/img/dark_mode.png" alt=""></a>
-                <a href="home.html" class="icon-button"><img src="../../static/img/Home.png" alt=""></a>
+                <form type="hidden" class="icon-button" action="/home" method="GET">
+                    <button type="submit"><img src="../../static/img/Home.png" alt=""></button>
+                </form>
                 <div class="user-menu">
                     <a href="#" class="icon-button"><img src="../../static/img/user.png" alt=""></a>
                     <div class="user-menu-content">
-                        <a href="#">Editar informações</a>
+                        <form id="logout" action="/editar-informacoes" method="GET">
+                            <button type="submit">Editar informações</button>
+                        </form>
                         <form id="logout" action="/logout" method="POST">
                             <button type="submit">Logout</button>
                         </form>
@@ -39,7 +43,9 @@
             
         <section class="features">
             <div class="feature-item">
-                <a href="calcular-argumento.html" class="feature-button">Calcular argumento bruto</a>
+                <form action="/calcular-argumento" method="get">
+                    <button type="submit">Calcular argumento</button>
+                </form>
             </div>
             <div class="feature-item">
                 <a href="notas_corte.html" class="feature-button">Notas de corte</a>
@@ -95,10 +101,6 @@
         </div>
     </main>
     %end
-
-    <!-- <form action="/logout" method="post">
-        <button type="submit">Logout</button>
-    </form> -->
 
 </body>
 </html>

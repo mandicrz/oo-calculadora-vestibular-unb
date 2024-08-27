@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Vestibular Tradicional UnB</title>
-    <link rel="stylesheet" href="../../static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
     <script src="../../static/js/index.js" defer></script>
     
@@ -99,7 +99,7 @@
 
     </form>
     
-    %if transfered
+    %if transfered:
     <div class="result-container">
         <p>O seus argumentos são:</p>
         <div class="result">Grupo 1: {{resultado}} e Grupo 2: {{resultado2}} </div>
