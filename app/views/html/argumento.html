@@ -34,19 +34,19 @@
             <div class="section">
                 <h2>Parte 1 | Estrangeira</h2>
                 <label>Acertos tipo A</label>
-                <input type="text" name="acertos_ta_estg">
+                <input type="number" name="acertos_ta_estg">
                 <label>Erros tipo A</label>
-                <input type="text" name="erros_ta_estg">
+                <input type="number" name="erros_ta_estg">
                 <label>Acertos tipo <B></B></label>
-                <input type="text" name="acertos_tb_estg">
+                <input type="number" name="acertos_tb_estg">
                 <label>Erros tipo B</label>
-                <input type="text" name="erros_tb_estg">
+                <input type="number" name="erros_tb_estg">
                 <label>Acertos tipo C</label>
-                <input type="text" name="acertos_tc_estg">
+                <input type="number" name="acertos_tc_estg">
                 <label>Erros tipo C</label>
-                <input type="text" name="erros_tc_estg">
+                <input type="number" name="erros_tc_estg">
                 <label>Acertos tipo D</label>
-                <input type="text" name="acertos_td_estg">
+                <input type="number" name="acertos_td_estg">
                 
                 <label>Língua Estrangeira</label>
                 <select name="lingua_estrangeira">
@@ -59,37 +59,39 @@
             <div class="section">
                 <h2>Parte 2 | Humanas</h2>
                 <label>Acertos tipo A</label>
-                <input type="text" name="acertos_ta_parte_2">
+                <input type="number" name="acertos_ta_parte_2">
                 <label>Erros tipo A</label>
-                <input type="text" name="erros_ta_parte_2">
+                <input type="number" name="erros_ta_parte_2">
                 <label>Acertos tipo B</B></label>
-                <input type="text" name="acertos_tb_parte_2">
+                <input type="number" name="acertos_tb_parte_2">
                 <label>Erros tipo B</label>
-                <input type="text" name="erros_tb_parte_2">
+                <input type="number" name="erros_tb_parte_2">
                 <label>Acertos tipo C</label>
-                <input type="text" name="acertos_tc_parte_2">
+                <input type="number" name="acertos_tc_parte_2">
                 <label>Erros tipo C</label>
-                <input type="text" name="erros_tc_parte_2">
+                <input type="number" name="erros_tc_parte_2">
                 <label>Acertos tipo D</label>
-                <input type="text" name="acertos_td_parte_2">
+                <input type="number" name="acertos_td_parte_2">
+                <label>Nota da Redação</label>
+                <input type="number" name="notaRedacao">
             </div>
         
             <div class="section">
                 <h2>Parte 3 | Exatas</h2>
                 <label>Acertos tipo A</label>
-                <input type="text" name="acertos_ta_parte_3">
+                <input type="number" name="acertos_ta_parte_3">
                 <label>Erros tipo A</label>
-                <input type="text" name="erros_ta_parte_3">
+                <input type="number" name="erros_ta_parte_3">
                 <label>Acertos tipo <B></B></label>
-                <input type="text" name="acertos_tb_parte_3">
+                <input type="number" name="acertos_tb_parte_3">
                 <label>Erros tipo B</label>
-                <input type="text" name="erros_tb_parte_3">
+                <input type="number" name="erros_tb_parte_3">
                 <label>Acertos tipo C</label>
-                <input type="text" name="acertos_tc_parte_3">
+                <input type="number" name="acertos_tc_parte_3">
                 <label>Erros tipo C</label>
-                <input type="text" name="erros_tc_parte_3">
+                <input type="number" name="erros_tc_parte_3">
                 <label>Acertos tipo D</label>
-                <input type="text" name="acertos_td_parte_3">
+                <input type="number" name="acertos_td_parte_3">
             </div>
         </div>
 
@@ -98,8 +100,8 @@
     </form>
     
     <div class="result-container">
-        <p>O seu argumento bruto é:</p>
-        <div class="result">{{resultado}}</div>
+        <p>O seus argumentos são:</p>
+        <div class="result">Grupo 1: {{resultado}} e Grupo 2: {{resultado2}} </div>
     </div>
         
     
