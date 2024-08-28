@@ -77,6 +77,21 @@ p {
     display: block;
 }
 
+.header-nav form button {
+    background-color: transparent; 
+    border: none; 
+    padding: 0; 
+    cursor: pointer; 
+    height: 40px; 
+    width: 40px; 
+}
+
+.header-nav form button img {
+    max-height: 90%;
+    max-width: 90%;
+    display: block;
+}
+
 .user-menu {
     position: relative;
     display: inline-block;
@@ -157,52 +172,34 @@ p {
 .features {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap; /* Ajusta o layout em telas menores */
     margin-bottom: 40px;
 }
 
 .feature-item {
+    font-family: "Montagu Slab", serif;
+    font-size: 16px; 
+    font-weight: 700; 
+    color: var(--text-color); 
+    background-color: transparent; 
+    border: none; 
     width: 200px;
     height: 200px;
     background-color: var(--itens);
-    border-radius: 100%;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.feature-button {
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    text-decoration: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 16px;
-    font-weight: 700;
+    margin: 10px; 
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    justify-content: center;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    transition: transform 0.3s;
 }
 
 .feature-item:hover {
-    animation: pulse 1s infinite;
+    transform: scale(1.05); /* Leve aumento de escala */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Aumento da sombra */
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
 
 .info-section {
     display: flex;

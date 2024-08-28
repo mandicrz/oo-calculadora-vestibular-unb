@@ -15,12 +15,12 @@
         <nav class="header-nav">
             <div class="nav-icons">
                 <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="/static/img/dark_mode.png" alt=""></a>
-                <form class="icon-button" action="/home/{{current_user}}" method="GET">
-                    <button type="submit"><img src="/static/img/Home.png" alt=""></button>
+                <form action="/home/{{current_user}}" method="GET">
+                    <button type="submit" class="icon-button"><img src="/static/img/Home.png" alt=""></button>
                 </form>
                 <div class="user-menu">
                     <a href="#" class="icon-button"><img src="/static/img/user.png" alt=""></a>
-                    <div class="user-menu-content">
+                       <div class="user-menu-content">
                         <form id="logout" action="/editar-informacoes" method="GET">
                             <button type="submit">Editar informações</button>
                         </form>

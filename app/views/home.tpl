@@ -15,8 +15,8 @@
         <nav class="header-nav">
             <div class="nav-icons">
                 <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="/static/img/dark_mode.png" alt=""></a>
-                <form class="icon-button" action="/home/{{current_user.username}}" method="GET">
-                    <button type="submit"><img src="/static/img/Home.png" alt=""></button>
+                <form  action="/home/{{current_user.username}}" method="GET">
+                    <button type="submit" class="icon-button"><img src="/static/img/Home.png" alt=""></button>
                 </form>
                 <div class="user-menu">
                     <a href="#" class="icon-button"><img src="/static/img/user.png" alt=""></a>
@@ -42,20 +42,19 @@
         </section>
             
         <section class="features">
-            <div class="feature-item">
-                <form action="/calcular-argumento" method="GET">
-                    <button type="submit">Calcular argumento</button>
-                </form>
-            </div>
-            <div class="feature-item">
-                <a href="notas_corte.html" class="feature-button">Notas de corte</a>
-            </div>
-            <div class="feature-item">
-                <a href="argumento_salvo.html" class="feature-button">Argumentos salvos</a>
-            </div>
-            <div class="feature-item">
-                <a href="passou.html" class="feature-button">Verificar se passou</a>
-            </div>
+            <form action="/calcular-argumento" method="GET">
+                <button type="submit" class="feature-item" >Calcular Argumento Final</button>
+            </form>
+
+            <form action="/notas-corte" method="GET">
+                <button type="submit" class="feature-item" >Notas de Corte</button>
+            </form>
+            <form action="/argumentos-salvos" method="GET">
+                <button type="submit" class="feature-item" >Argumentos Salvos</button>
+            </form>
+            <form action="/passou" method="GET">
+                <button type="submit" class="feature-item" >Verificar se Passou</button>
+            </form>
         </section>
 
         <div class="info-section">

@@ -103,3 +103,12 @@ class Application():
         notaRed = self.vestibular.argRed(notaRedacao)
     
         return self.vestibular.argFinal(notaEstg, notaP2, notaP3, notaRed)
+    
+    def get_all_users(self):
+        return self._model.get_all_users()
+
+    def remove_user(self, username):
+        self._model.remove_user(username)
+
+    def edit_user(self, username, new_username, new_password, new_email):
+        return self._model.edit_user(username, new_username, new_password, new_email)

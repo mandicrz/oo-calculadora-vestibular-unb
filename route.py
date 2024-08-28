@@ -7,7 +7,6 @@ vestibular = Vestibular()
 app = Bottle()
 ctl = Application()
 
-
 @app.route('/static/<filepath:path>')
 def serve_static(filepath):
     return static_file(filepath, root='./app/static')
@@ -99,44 +98,29 @@ def calcular():
 
 @app.route('/admin', method='GET')
 def admin_page():
-    session_id = ctl.get_session_id()
-    current_username = ctl._model.getUserName(session_id)
-    
-    if current_username == "admin":
-        users = ctl._model.get_all_users()
+    if ctl.is_authenticated('admin'):
+        users = ctl.get_all_users()
         return template('app/views/admin', users=users)
-    
     return redirect('/')
-    
+
 @app.route('/admin/remove_user', method='POST')
 def remove_user():
-    username = request.forms.get('username')
-    
-    session_id = ctl.get_session_id()
-    current_username = ctl._model.getUserName(session_id)
-    
-    if current_username == "admin":
-        ctl._model.remove_user(username)
+    if ctl.is_authenticated('admin'):
+        ctl.remove_user(request.forms.get('username'))
         return redirect('/admin')
-    
     return redirect('/')
 
 @app.route('/admin/edit_user', method='POST')
 def edit_user():
-    session_id = ctl.get_session_id()
-    current_username = ctl._model.getUserName(session_id)
-    
-    if current_username == "admin":
-        username = request.forms.get('username')
-        new_username = request.forms.get('new_username')
-        new_email = request.forms.get('new_email')
-        new_password = request.forms.get('new_password')
-        
-        ctl._model.edit_user(username, new_username, new_password, new_email)
-        
+    if ctl.is_authenticated('admin'):
+        ctl.edit_user(
+            request.forms.get('username'),
+            request.forms.get('new_username'),
+            request.forms.get('new_password'),
+            request.forms.get('new_email')
+        )
         return redirect('/admin')
-    
-
+    return "Erro ao editar usuário."
 
 if __name__ == '__main__':
 
