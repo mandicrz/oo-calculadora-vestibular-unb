@@ -26,10 +26,6 @@ def action_pagina(username=None):
 def login():
     return ctl.render('login')
 
-@app.route('/home', method='GET')
-def home():
-    return ctl.render('home')
-
 @app.route('/', method='POST')
 def home_post():
     action = request.forms.get('action')
@@ -72,13 +68,23 @@ def argumento():
     if session_id:
         current_username = ctl._model.getUserName(session_id)
         if current_username:
-            return ctl.render('calcular-argumento')
+            return template('app/views/calcular-argumento', transfered=True, current_user=current_username)
     
     return redirect('/')
 
-@app.route('/calcular-argumento', methods=['POST'])
+@app.route('/calcular-argumento', method=['GET', 'POST'])
 def calcular():
-    return ctl.calcular_argumento()
+    argumento_final_gp_1, argumento_final_gp_2 = ctl.calcular_argumento()
+    argumento_final_gp_1 = round(argumento_final_gp_1, 3)
+    argumento_final_gp_2 = round(argumento_final_gp_2, 3)
+    
+    session_id = ctl.get_session_id()
+    
+    if session_id:
+        current_username = ctl._model.getUserName(session_id)
+    
+    return template('app/views/calcular-argumento', resultado=argumento_final_gp_1, resultado2=argumento_final_gp_2, transfered=True, current_user = current_username)
+
 
 
 if __name__ == '__main__':

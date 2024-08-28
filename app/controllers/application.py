@@ -25,16 +25,16 @@ class Application():
         return request.get_cookie('session_id')
 
     def login(self):
-        return template('app/views/html/login')
+        return template('app/views/login')
 
     def home(self,username=None):
         if self.is_authenticated(username):
             session_id= self.get_session_id()
             user = self._model.getCurrentUser(session_id)
-            return template('app/views/html/home', \
+            return template('app/views/home', \
             transfered=True, current_user=user)
         else:
-            return template('app/views/html/home', \
+            return template('app/views/home', \
             transfered=False)
 
 
@@ -67,29 +67,29 @@ class Application():
         self._model.book(username, password, email)
         
     def calcular_argumento(self):
-        acertos_ta_estg = int(request.forms.get('acertos_ta_estg', 0))
-        erros_ta_estg = int(request.forms.get('erros_ta_estg', 0))
-        acertos_tb_estg = int(request.forms.get('acertos_tb_estg', 0))
-        acertos_tc_estg = int(request.forms.get('acertos_tc_estg', 0))
-        erros_tc_estg = int(request.forms.get('erros_tc_estg', 0))
-        acertos_td_estg = int(request.forms.get('acertos_td_estg', 0))
+        acertos_ta_estg = int(request.forms.get('acertos_ta_estg') or 0)
+        erros_ta_estg = int(request.forms.get('erros_ta_estg') or 0)
+        acertos_tb_estg = int(request.forms.get('acertos_tb_estg') or 0)
+        acertos_tc_estg = int(request.forms.get('acertos_tc_estg') or 0)
+        erros_tc_estg = int(request.forms.get('erros_tc_estg') or 0)
+        acertos_td_estg = int(request.forms.get('acertos_td_estg') or 0)
         
-        acertos_ta_parte_2 = int(request.forms.get('acertos_ta_parte_2', 0))
-        erros_ta_parte_2 = int(request.forms.get('erros_ta_parte_2', 0))
-        acertos_tb_parte_2 = int(request.forms.get('acertos_tb_parte_2', 0))
-        acertos_tc_parte_2 = int(request.forms.get('acertos_tc_parte_2', 0))
-        erros_tc_parte_2 = int(request.forms.get('erros_tc_parte_2', 0))
-        acertos_td_parte_2 = int(request.forms.get('acertos_td_parte_2', 0))
+        acertos_ta_parte_2 = int(request.forms.get('acertos_ta_parte_2') or 0)
+        erros_ta_parte_2 = int(request.forms.get('erros_ta_parte_2') or 0)
+        acertos_tb_parte_2 = int(request.forms.get('acertos_tb_parte_2') or 0)
+        acertos_tc_parte_2 = int(request.forms.get('acertos_tc_parte_2') or 0)
+        erros_tc_parte_2 = int(request.forms.get('erros_tc_parte_2') or 0)
+        acertos_td_parte_2 = int(request.forms.get('acertos_td_parte_2') or 0)
         
-        acertos_ta_parte_3 = int(request.forms.get('acertos_ta_parte_3', 0))
-        erros_ta_parte_3 = int(request.forms.get('erros_ta_parte_3', 0))
-        acertos_tb_parte_3 = int(request.forms.get('acertos_tb_parte_3', 0))
-        acertos_tc_parte_3 = int(request.forms.get('acertos_tc_parte_3', 0))
-        erros_tc_parte_3 = int(request.forms.get('erros_tc_parte_3', 0))
-        acertos_td_parte_3 = int(request.forms.get('acertos_td_parte_3', 0))
+        acertos_ta_parte_3 = int(request.forms.get('acertos_ta_parte_3') or 0)
+        erros_ta_parte_3 = int(request.forms.get('erros_ta_parte_3') or 0)
+        acertos_tb_parte_3 = int(request.forms.get('acertos_tb_parte_3') or 0)
+        acertos_tc_parte_3 = int(request.forms.get('acertos_tc_parte_3') or 0)
+        erros_tc_parte_3 = int(request.forms.get('erros_tc_parte_3') or 0)
+        acertos_td_parte_3 = int(request.forms.get('acertos_td_parte_3') or 0)
 
-        notaRedacao = float(request.forms.get('notaRedacao', 0.0))
-        lingua = request.forms.get('lingua', 'ingles')
+        notaRedacao = float(request.forms.get('notaRedacao') or 0.0)
+        lingua = request.forms.get('lingua')
 
         calcEstg = self.vestibular.calcEstg(acertos_ta_estg, erros_ta_estg, acertos_tb_estg, acertos_tc_estg, erros_tc_estg, acertos_td_estg)
         calcP2 = self.vestibular.calcP2(acertos_ta_parte_2, erros_ta_parte_2, acertos_tb_parte_2, acertos_tc_parte_2, erros_tc_parte_2, acertos_td_parte_2)
@@ -99,7 +99,5 @@ class Application():
         notaP2 = self.vestibular.argP2(calcP2)
         notaP3 = self.vestibular.argP3(calcP3)
         notaRed = self.vestibular.argRed(notaRedacao)
-        
-        argumento_final_gp_1, argumento_final_gp_2 = self.vestibular.argFinal(notaEstg, notaP2, notaP3, notaRed)
-
-        return template('app/views/html/calcular-argumento', resultado = argumento_final_gp_1, resultado2 = argumento_final_gp_2, transfered=True)
+    
+        return self.vestibular.argFinal(notaEstg, notaP2, notaP3, notaRed)

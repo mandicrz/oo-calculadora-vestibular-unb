@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Vestibular Tradicional UnB</title>
-    <link rel="stylesheet" href="../../static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
     <script src="../../static/js/index.js" defer></script>
     
@@ -14,12 +14,12 @@
         <h1 class="header-title">Calculadora Vestibular Tradicional UnB</h1>
         <nav class="header-nav">
             <div class="nav-icons">
-                <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="../../static/img/dark_mode.png" alt=""></a>
-                <form type="hidden" class="icon-button" action="/home" method="GET">
-                    <button type="submit"><img src="../../static/img/Home.png" alt=""></button>
+                <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="/static/img/dark_mode.png" alt=""></a>
+                <form class="icon-button" action="/home/{{current_user.username}}" method="GET">
+                    <button type="submit"><img src="/static/img/Home.png" alt=""></button>
                 </form>
                 <div class="user-menu">
-                    <a href="#" class="icon-button"><img src="../../static/img/user.png" alt=""></a>
+                    <a href="#" class="icon-button"><img src="/static/img/user.png" alt=""></a>
                     <div class="user-menu-content">
                         <form id="logout" action="/editar-informacoes" method="GET">
                             <button type="submit">Editar informações</button>
@@ -43,7 +43,7 @@
             
         <section class="features">
             <div class="feature-item">
-                <form action="/calcular-argumento" method="get">
+                <form action="/calcular-argumento" method="GET">
                     <button type="submit">Calcular argumento</button>
                 </form>
             </div>
