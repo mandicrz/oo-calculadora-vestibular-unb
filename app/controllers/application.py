@@ -49,6 +49,8 @@ class Application():
         if session_id:
             self.logout_user()
             self._current_username= self._model.getUserName(session_id)
+            if username == "admin":
+                return session_id, "admin"
             return session_id, username
         return None
 

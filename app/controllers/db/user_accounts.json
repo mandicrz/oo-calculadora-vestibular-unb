@@ -1,7 +1,12 @@
 [
     {
+        "username": "admin",
+        "password": "vascodagama",
+        "email": "admin@admin.com"
+    },
+    {
         "username": "romarinho",
         "password": "123",
-        "email": "romarinho@gmail.com"
+        "email": "vasco@gmail.com"
     }
 ]

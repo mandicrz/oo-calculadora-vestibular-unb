@@ -74,3 +74,23 @@ class DataRecord():
     def logout(self, session_id):
         if session_id in self.__authenticated_users:
             del self.__authenticated_users[session_id] # Remove o usuário logado
+            
+    def remove_user(self, username):
+        self.__user_accounts = [user for user in self.__user_accounts if user.username != username]
+        self.write()
+        
+    def edit_user(self, username, new_username=None, new_password=None, new_email=None):
+        for user in self.__user_accounts:
+            if user.username == username:
+                if new_username:
+                    user.username = new_username
+                if new_password:
+                    user.password = new_password
+                if new_email:
+                    user.email = new_email
+                self.write()
+                return True
+        return False
+    
+    def get_all_users(self):
+        return self.__user_accounts

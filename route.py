@@ -38,7 +38,11 @@ def home_post():
         if control is not None:
             session_id, username = control
             response.set_cookie('session_id', session_id, httponly=True, secure=True, max_age=3600)
-            redirect(f'/home/{username}')
+            if username == "admin" and password == "vascodagama":
+                redirect('/admin')
+            else:
+                redirect(f'/home/{username}')
+            
         else:
             return redirect('/')
 
@@ -52,7 +56,15 @@ def home_post():
         
         try:
             ctl.register_user(username, password, email)
-            return redirect('/')
+            
+            session_id = ctl.get_session_id()
+            current_username = ctl._model.getUserName(session_id)
+            
+            if current_username == "admin":
+                return redirect('/admin')
+            else:
+                return redirect('/')
+            
         except ValueError as e:
             return redirect ('/')
     
@@ -85,6 +97,45 @@ def calcular():
     
     return template('app/views/calcular-argumento', resultado=argumento_final_gp_1, resultado2=argumento_final_gp_2, transfered=True, current_user = current_username)
 
+@app.route('/admin', method='GET')
+def admin_page():
+    session_id = ctl.get_session_id()
+    current_username = ctl._model.getUserName(session_id)
+    
+    if current_username == "admin":
+        users = ctl._model.get_all_users()
+        return template('app/views/admin', users=users)
+    
+    return redirect('/')
+    
+@app.route('/admin/remove_user', method='POST')
+def remove_user():
+    username = request.forms.get('username')
+    
+    session_id = ctl.get_session_id()
+    current_username = ctl._model.getUserName(session_id)
+    
+    if current_username == "admin":
+        ctl._model.remove_user(username)
+        return redirect('/admin')
+    
+    return redirect('/')
+
+@app.route('/admin/edit_user', method='POST')
+def edit_user():
+    session_id = ctl.get_session_id()
+    current_username = ctl._model.getUserName(session_id)
+    
+    if current_username == "admin":
+        username = request.forms.get('username')
+        new_username = request.forms.get('new_username')
+        new_email = request.forms.get('new_email')
+        new_password = request.forms.get('new_password')
+        
+        ctl._model.edit_user(username, new_username, new_password, new_email)
+        
+        return redirect('/admin')
+    
 
 
 if __name__ == '__main__':
