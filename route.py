@@ -6,20 +6,13 @@ from bottle import redirect, template, response
 vestibular = Vestibular()
 app = Bottle()
 ctl = Application()
+# -------------------------------------------------------------------
 
 @app.route('/static/<filepath:path>')
 def serve_static(filepath):
     return static_file(filepath, root='./app/static')
 
-@app.route('/home/<username>', methods=['GET'])
-def action_pagina(username=None):
-    session_id = ctl.get_session_id()
-    if session_id:
-        current_username = ctl._model.getUserName(session_id)
-        if current_username == username:
-            return ctl.render('home', username)
-    
-    return redirect('/')
+# -------------------------------------------------------------------
 
 @app.route('/', method='GET')
 def login():
@@ -66,35 +59,16 @@ def home_post():
             
         except ValueError as e:
             return redirect ('/')
-    
+        
+# -------------------------------------------------------------------
+
 @app.route('/logout', method='POST')
 def logout():
     ctl.logout_user()
     response.delete_cookie('session_id')
     redirect('/')
     
-@app.route('/calcular-argumento', method='GET')
-def argumento():
-    session_id = ctl.get_session_id()
-    if session_id:
-        current_username = ctl._model.getUserName(session_id)
-        if current_username:
-            return template('app/views/calcular-argumento', transfered=True, current_user=current_username)
-    
-    return redirect('/')
-
-@app.route('/calcular-argumento', method=['GET', 'POST'])
-def calcular():
-    argumento_final_gp_1, argumento_final_gp_2 = ctl.calcular_argumento()
-    argumento_final_gp_1 = round(argumento_final_gp_1, 3)
-    argumento_final_gp_2 = round(argumento_final_gp_2, 3)
-    
-    session_id = ctl.get_session_id()
-    
-    if session_id:
-        current_username = ctl._model.getUserName(session_id)
-    
-    return template('app/views/calcular-argumento', resultado=argumento_final_gp_1, resultado2=argumento_final_gp_2, transfered=True, current_user = current_username)
+# -------------------------------------------------------------------
 
 @app.route('/admin', method='GET')
 def admin_page():
@@ -122,15 +96,35 @@ def edit_user():
         return redirect('/admin')
     return "Erro ao editar usuário."
 
+# -------------------------------------------------------------------
+
+@app.route('/home/<username>', methods=['GET'])
+def home_page(username):
+    authenticated_user = ctl.get_authenticated_user()
+    if authenticated_user == username:
+        return ctl.render('home', username)
+    return redirect('/')
+# -------------------------------------------------------------------
+
+@app.route('/calcular-argumento', method=['GET', 'POST'])
+def calcular():
+    argumento_final_gp_1, argumento_final_gp_2 = ctl.calcular_argumento()
+    argumento_final_gp_1 = round(argumento_final_gp_1, 3)
+    argumento_final_gp_2 = round(argumento_final_gp_2, 3)
+    
+    current_user = ctl.get_authenticated_user()
+    if current_user:
+        return template('app/views/calcular-argumento', resultado=argumento_final_gp_1, resultado2=argumento_final_gp_2, transfered=True, current_user=current_user)
+    return redirect ('/')
+# -------------------------------------------------------------------
+
 @app.route('/notas-corte', method='GET')
 def notas():
-    session_id = ctl.get_session_id()
-    if session_id:
-        current_username = ctl._model.getUserName(session_id)
-        if current_username:
-            return ctl.notas_corte()
+    if ctl.get_authenticated_user():
+        return ctl.notas_corte()
     return redirect('/')
 
 if __name__ == '__main__':
 
     run(app, host='localhost', port=8080, debug=True)
+    

@@ -15,7 +15,7 @@
         <nav class="header-nav">
             <div class="nav-icons">
                 <a href="#" id="dark-mode-toggle" class="icon-button" ><img src="/static/img/dark_mode.png" alt=""></a>
-                <form  action="/home/{{current_user.username}}" method="GET">
+                <form  action="/home/{{current_user}}" method="GET">
                     <button type="submit" class="icon-button"><img src="/static/img/Home.png" alt=""></button>
                 </form>
                 <div class="user-menu">

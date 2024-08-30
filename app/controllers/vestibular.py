@@ -4,22 +4,26 @@ class Vestibular():
     def __init__(self):
         self.grupo = self._setGrupo()
         self.notaCorte = self._setNotaCorte()
+        
         #media
-        self.media_esp=9.723
-        self.media_ing=15.680
-        self.media_fra=12.710
-        self.media_parte_2=59.640
-        self.media_parte_3=32.146
-        self.media_red=7.107
+        self.media_esp = 9.723
+        self.media_ing = 15.680
+        self.media_fra = 12.710
+        self.media_parte_2 = 59.640
+        self.media_parte_3 = 32.146
+        self.media_red = 7.107
+        
         #desvio padrão
-        self.dp_esp=5.894
-        self.dp_ing=6.260
-        self.dp_fra=6.873
-        self.dp_parte_2=18.954
-        self.dp_parte_3=24.914
-        self.dp_red=1.777
+        self.dp_esp = 5.894
+        self.dp_ing = 6.260
+        self.dp_fra = 6.873
+        self.dp_parte_2 = 18.954
+        self.dp_parte_3 = 24.914
+        self.dp_red = 1.777
+    
     #retorna uma matriz onde cada linha representa um curso 
     # coluna 0 = grupo e 1 = nome do curso
+    
     def _setGrupo(self):
         with open('app/controllers/csv/ED_1_VESTUNB_2024_ABERTURA_organized-_2_.csv') as arquivo:
             cursos=[]

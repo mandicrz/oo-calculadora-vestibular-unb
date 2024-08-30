@@ -1,6 +1,6 @@
 from app.controllers.db.dataRecord import DataRecord
 from app.controllers.vestibular import Vestibular
-from bottle import template, request, response
+from bottle import template, request, response, redirect
 class Application():
 
     def __init__(self):
@@ -21,23 +21,15 @@ class Application():
             return content()
         else:
             return content(parameter)
+        
+    def get_authenticated_user(self):
+        session_id = request.get_cookie('session_id')
+        if session_id:
+            return self._model.getUserName(session_id)
+        return None
 
     def get_session_id(self):
         return request.get_cookie('session_id')
-
-    def login(self):
-        return template('app/views/login')
-
-    def home(self,username=None):
-        if self.is_authenticated(username):
-            session_id= self.get_session_id()
-            user = self._model.getCurrentUser(session_id)
-            return template('app/views/home', \
-            transfered=True, current_user=user)
-        else:
-            return template('app/views/home', \
-            transfered=False)
-
 
     def is_authenticated(self, username):
         session_id = self.get_session_id()
@@ -55,7 +47,6 @@ class Application():
             return session_id, username
         return None
 
-
     def logout_user(self):
         self._current_username= None
         session_id = self.get_session_id()
@@ -68,6 +59,20 @@ class Application():
             raise ValueError("Nome de usuário já existe.")
 
         self._model.book(username, password, email)
+        
+    
+    def login(self):
+        return template('app/views/login')
+
+    def home(self,username=None):
+        if self.is_authenticated(username):
+            session_id= self.get_session_id()
+            user = self._model.getCurrentUser(session_id)
+            return template('app/views/home', \
+            transfered=True, current_user=user)
+        else:
+            return template('app/views/home', \
+            transfered=False)
         
     def calcular_argumento(self):
         acertos_ta_estg = int(request.forms.get('acertos_ta_estg') or 0)
@@ -115,6 +120,7 @@ class Application():
         return self._model.edit_user(username, new_username, new_password, new_email)
     
     def notas_corte(self):
-        session_id = self.get_session_id()
-        current_user = self._model.getCurrentUser(session_id)
-        return template('app/views/notas-corte', transfered=True, current_user=current_user)
+        current_user = self.get_authenticated_user()
+        if current_user:
+            return template('app/views/notas-corte', transfered=True, current_user=current_user)
+        return redirect('/')
