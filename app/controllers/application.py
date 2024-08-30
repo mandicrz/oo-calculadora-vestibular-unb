@@ -1,5 +1,6 @@
 from app.controllers.db.dataRecord import DataRecord
 from app.controllers.vestibular import Vestibular
+from app.controllers.vestibular import Vestibulando
 from bottle import template, request, response, redirect
 class Application():
 
@@ -12,6 +13,7 @@ class Application():
             'notas-corte': self.notas_corte
         }
         self.vestibular = Vestibular()
+        self.vestibulando = Vestibulando()
         self._model= DataRecord()
         self._current_username = None
 
@@ -122,5 +124,6 @@ class Application():
     def notas_corte(self):
         current_user = self.get_authenticated_user()
         if current_user:
-            return template('app/views/notas-corte', transfered=True, current_user=current_user)
+            notaCorte = self.vestibulando.vestibular.notaCorte 
+            return template('app/views/notas-corte', transfered=True, current_user=current_user, notaCorte = notaCorte)
         return redirect('/')

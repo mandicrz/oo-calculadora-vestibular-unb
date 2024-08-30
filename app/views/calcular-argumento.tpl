@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Vestibular Tradicional UnB</title>
+    <title>Calcular Argumento Final</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    <script src="../../static/js/index.js" defer></script>
+    <script src="/static/js/index.js" defer></script>
     
 </head>
 <body>

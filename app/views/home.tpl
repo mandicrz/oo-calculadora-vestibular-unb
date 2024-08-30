@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Vestibular Tradicional UnB</title>
+    <title>Home</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    <script src="../../static/js/index.js" defer></script>
-    
+    <script src="/static/js/index.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -49,9 +48,6 @@
             <form action="/notas-corte" method="GET">
                 <button type="submit" class="feature-item" >Notas de Corte</button>
             </form>
-            <form action="/argumentos-salvos" method="GET">
-                <button type="submit" class="feature-item" >Argumentos Salvos</button>
-            </form>
             <form action="/passou" method="GET">
                 <button type="submit" class="feature-item" >Verificar se Passou</button>
             </form>
@@ -61,7 +57,7 @@
             <section class="faq">
                 <h3 class="faq-title">dúvidas gerais</h3>
                 <div class="faq-item">
-                    <h4 class="faq-question">Title <span class="arrow">▼</span></h4>
+                    <h4 class="faq-question">Title <button class="arrow">▼</button></h4>
                     <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
                 </div>
                 <div class="faq-item">
@@ -88,13 +84,15 @@
 
             <section class="about">
                 <h3 class="about-title">sobre nós</h3>
+                <h4 class="about-text" style="text-align: start; margin-left: 230px;">Amanda Cruz Lima</h4>
                 <div class="about-item">
-                    <div class="circle"></div>
-                    <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="circle"><img class="perfil-img" src="/static/img/amanda.jpg" alt=""></div>
+                    <p class="about-text">&numsp;&numsp;Estudante do 3° semestre de Engenharia de Software na Universidade de Brasília, com 19 anos. Apesar de estar mergulhada no mundo da tecnologia, o HTML ainda é um mistério para mim. Apaixonada pelo Vasco, sempre dou um jeito de torcer pelo meu time enquanto aprendo mais sobre programação </p>
                 </div>
+                <h4 class="about-text" style="text-align: start; margin-left: 230px;">Isaque C. Nascimento</h4>
                 <div class="about-item">
-                    <div class="circle"></div>
-                    <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="circle"><img class="perfil-img" src="/static/img/isaque.jpg" alt=""></div>
+                    <p class="about-text">&numsp;&numsp;Olá! Sou um graduando de Engenharia de Software na Universidade de Brasília (UnB). Como santista estou acostumado com adversidades, minha maior batalha não é codificar soluções complexas, mas sim escolher cores no CSS.</p>
                 </div>
             </section>
         </div>

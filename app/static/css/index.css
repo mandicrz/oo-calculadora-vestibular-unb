@@ -209,9 +209,12 @@ p {
     
 }
 
-.faq,
-.about {
+.faq {
     width: 40%;
+}
+
+.about {
+    width: 50%;
 }
 
 .faq-title,
@@ -254,25 +257,42 @@ p {
     display: block;
 }
 
+.arrow {
+    all: unset;
+    transform: rotate(270deg);
+}
+
 .about-item {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .circle {
-    width: 350px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 150px;
     height: 150px;
     background-color: var(--itens);
-    border-radius: 100%;
-    margin-right: 20px;
+    border-radius: 50%;
 }
 
 .about-text {
+    width: 75%;
     color: var(--text-color2);
     font-size: 18px;
     line-height: 1.5;
     text-align: justify;
+}
+
+.perfil-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
 .container {
@@ -369,4 +389,3 @@ p {
     display: flex;
     flex-direction: column;
 }
-

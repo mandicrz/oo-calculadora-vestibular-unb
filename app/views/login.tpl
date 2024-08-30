@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/324b71f187.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    <link rel="stylesheet" href="../../static/css/login.css">
-    <script src="../../static/js/login.js" defer></script>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <script src="/static/js/login.js" defer></script>
     <title>Login</title>
 </head>
 <body>

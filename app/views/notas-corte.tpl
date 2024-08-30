@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Vestibular Tradicional UnB</title>
+    <title>Notas de Corte</title>
     <link rel="stylesheet" type="text/css" href="/static/css/notas-corte.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    <script src="../../static/js/index.js" defer></script>
+    <script src="/static/js/index.js"></script>
     
 </head>
 <body>
@@ -43,8 +43,8 @@
             <tr>
                 <th colspan="3">&nbsp;</th>
                 <th >Sistema de Cotas Para Negros</th>
-                <th colspan="4">Renda <= 1.5 Salário mínimo</th>
-                <th colspan="4">Renda >= 1.5 Salário mínimo</th>
+                <th colspan="4">Renda <= 1.5 Salário Mínimo</th>
+                <th colspan="4">Renda >= 1.5 Salário Mínimo</th>
                 <th>Sistema Universal</th>
             </tr>
             <tr>
@@ -62,25 +62,26 @@
                 <th>Min(Não PPI) PCD</th>
                 <th>Min</th>
             </tr>
-            <!-- % for notas in notaCorte: -->
+            
+        % for notas in notaCorte:
             <tr>
 
-                <td>Campus UnB - Ceilândia / DF</td>
-                <td> Diurno</td>
-                <td> Enfermagem (Bacharelado)</td>
-                <td>23.685</td>
-                <td>-108.095</td>
-                <td> -205.570</td>
-                <td> -222.125</td>
-                <td>-</td>
-                <td>-53.480</td>
-                <td> -</td>
-                <td> -134.690</td>
-                <td>-</td>
-                <td> -6.265</td>
+                <td>{{notas[0]}}</td>
+                <td>{{notas[1]}}</td>
+                <td>{{notas[2]}}</td>
+                <td>{{notas[3]}}</td>
+                <td>{{notas[5]}}</td>
+                <td>{{notas[7]}}</td>
+                <td>{{notas[9]}}</td>
+                <td>{{notas[11]}}</td>
+                <td>{{notas[13]}}</td>
+                <td>{{notas[15]}}</td>
+                <td>{{notas[17]}}</td>
+                <td>{{notas[19]}}</td>
+                <td>{{notas[21]}}</td>
                 
             </tr>
-            <!-- % end -->
+        % end 
         </table>
     <div/>
 
