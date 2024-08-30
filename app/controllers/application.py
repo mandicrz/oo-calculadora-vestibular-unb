@@ -8,7 +8,8 @@ class Application():
         self.pages = {
             'home': self.home,
             'login': self.login,
-            'calcular-argumento': self.calcular_argumento
+            'calcular-argumento': self.calcular_argumento,
+            'notas-corte': self.notas_corte
         }
         self.vestibular = Vestibular()
         self._model= DataRecord()
@@ -112,3 +113,8 @@ class Application():
 
     def edit_user(self, username, new_username, new_password, new_email):
         return self._model.edit_user(username, new_username, new_password, new_email)
+    
+    def notas_corte(self):
+        session_id = self.get_session_id()
+        current_user = self._model.getCurrentUser(session_id)
+        return template('app/views/notas-corte', transfered=True, current_user=current_user)

@@ -122,6 +122,15 @@ def edit_user():
         return redirect('/admin')
     return "Erro ao editar usuário."
 
+@app.route('/notas-corte', method='GET')
+def notas():
+    session_id = ctl.get_session_id()
+    if session_id:
+        current_username = ctl._model.getUserName(session_id)
+        if current_username:
+            return ctl.notas_corte()
+    return redirect('/')
+
 if __name__ == '__main__':
 
     run(app, host='localhost', port=8080, debug=True)
