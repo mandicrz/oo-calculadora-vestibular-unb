@@ -2,16 +2,19 @@
     {
         "username": "admin",
         "password": "vascodagama",
-        "email": "admin@admin.com"
+        "email": "admin@admin.com",
+        "argGrupo1": [],
+        "argGrupo2": []
     },
     {
         "username": "romarinho",
         "password": "123",
-        "email": "vasco@gmail.com"
-    },
-    {
-        "username": "mathzcs1",
-        "password": "3424",
-        "email": "amandacruzlima.ac@gmail.com"
+        "email": "vasco@gmail.com",
+        "argGrupo1": [
+            12016.792
+        ],
+        "argGrupo2": [
+            18907.303
+        ]
     }
 ]

@@ -105,24 +105,40 @@ def home_page(username):
         return ctl.render('home', username)
     return redirect('/')
 # -------------------------------------------------------------------
+@app.route('/calcular-argumento', method='GET')
+def calcular_arg():
+    current_user = ctl.get_authenticated_user()
+    if current_user:
+        return template('app/views/calcular-argumento', resultado=None, resultado2=None, transfered=True, current_user=current_user)
 
-@app.route('/calcular-argumento', method=['GET', 'POST'])
+@app.route('/calcular-argumento', method= 'POST')
 def calcular():
     argumento_final_gp_1, argumento_final_gp_2 = ctl.calcular_argumento()
-    argumento_final_gp_1 = round(argumento_final_gp_1, 3)
-    argumento_final_gp_2 = round(argumento_final_gp_2, 3)
     
     current_user = ctl.get_authenticated_user()
     if current_user:
         return template('app/views/calcular-argumento', resultado=argumento_final_gp_1, resultado2=argumento_final_gp_2, transfered=True, current_user=current_user)
     return redirect ('/')
 # -------------------------------------------------------------------
-
 @app.route('/notas-corte', method='GET')
 def notas():
     if ctl.get_authenticated_user():
         return ctl.notas_corte()
     return redirect('/')
+# -------------------------------------------------------------------
+@app.route('/passou', method='GET')
+def passou():
+    current_user = ctl.get_authenticated_user()
+    if current_user:
+        return template('app/views/passou', transfered=True, transfered2=False, current_user = current_user)
+    return redirect('/')
+
+@app.route('/passou', method='POST')
+def passou_post():
+    current_user = ctl.authenticate_user()
+    if current_user:
+        return ctl.passou()
+# -------------------------------------------------------------------
 
 if __name__ == '__main__':
 

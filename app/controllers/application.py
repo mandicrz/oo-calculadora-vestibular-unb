@@ -1,4 +1,4 @@
-from app.controllers.db.dataRecord import DataRecord
+from app.controllers.dataRecord import DataRecord
 from app.controllers.vestibular import Vestibular
 from app.controllers.vestibular import Vestibulando
 from bottle import template, request, response, redirect
@@ -10,8 +10,10 @@ class Application():
             'home': self.home,
             'login': self.login,
             'calcular-argumento': self.calcular_argumento,
-            'notas-corte': self.notas_corte
+            'notas-corte': self.notas_corte,
+            'passou': self.passou
         }
+        
         self.vestibular = Vestibular()
         self.vestibulando = Vestibulando()
         self._model= DataRecord()
@@ -37,7 +39,6 @@ class Application():
         session_id = self.get_session_id()
         current_username = self._model.getUserName(session_id)
         return username == current_username
-
 
     def authenticate_user(self, username, password):
         session_id = self._model.checkUser(username, password)
@@ -109,8 +110,17 @@ class Application():
         notaP2 = self.vestibular.argP2(calcP2)
         notaP3 = self.vestibular.argP3(calcP3)
         notaRed = self.vestibular.argRed(notaRedacao)
-    
-        return self.vestibular.argFinal(notaEstg, notaP2, notaP3, notaRed)
+        
+        argumento_final_gp_1, argumento_final_gp_2 = self.vestibular.argFinal(notaEstg, notaP2, notaP3, notaRed)
+        
+        argumento_final_gp_1 = round(argumento_final_gp_1, 3)
+        argumento_final_gp_2 = round(argumento_final_gp_2, 3)
+        
+        current_user = self.get_authenticated_user()
+        if current_user:
+            self._model.save_argumentos(current_user, argumento_final_gp_1, argumento_final_gp_2)
+            
+        return argumento_final_gp_1, argumento_final_gp_2
     
     def get_all_users(self):
         return self._model.get_all_users()
@@ -127,3 +137,11 @@ class Application():
             notaCorte = self.vestibulando.vestibular.notaCorte 
             return template('app/views/notas-corte', transfered=True, current_user=current_user, notaCorte = notaCorte)
         return redirect('/')
+    
+    def passou(self):
+        current_user = self.get_authenticated_user
+        if current_user:
+            arg1, arg2 = None
+            sistema = request.forms.get('sistema')
+            passou2, passou1, naoPassou2, naoPassou1, i = self.vestibulando.passou(arg1,arg2,sistema)
+            return template('app/views/passou', transfered=True, transfered2= True, current_user=current_user, passou2 = passou2, passou1 = passou1, naoPassou2 = naoPassou2, naoPassou1 = naoPassou1,i= i)

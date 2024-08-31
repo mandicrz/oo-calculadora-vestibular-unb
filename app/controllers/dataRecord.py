@@ -94,3 +94,13 @@ class DataRecord():
     
     def get_all_users(self):
         return self.__user_accounts
+    
+    def save_argumentos(self, username, argumento_gp1, argumento_gp2):
+        for user in self.__user_accounts:
+            if user.username == username:
+                user.argGrupo1.append(argumento_gp1)
+                user.argGrupo2.append(argumento_gp2)
+                break
+        self.write()
+        
+    
