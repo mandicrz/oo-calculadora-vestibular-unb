@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas de Corte</title>
     <link rel="stylesheet" type="text/css" href="/static/css/notas-corte.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    <script src="/static/js/index.js"></script>
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap"> 
 </head>
 <body>
     <header class="header">
@@ -141,6 +139,7 @@
         
     <div/>
     % end
+    <script src="/static/js/index.js"></script>
 
 </body>
 </html>

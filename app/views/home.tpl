@@ -57,7 +57,8 @@
             <section class="faq">
                 <h3 class="faq-title">dúvidas gerais</h3>
                 <div class="faq-item">
-                    <h4 class="faq-question">Title <button class="arrow">▼</button></h4>
+                    <h4 class="faq-question">title
+                    <span class="arrow">▼</span></h4>
                     <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
                 </div>
                 <div class="faq-item">

@@ -161,6 +161,10 @@ def editar_informacoes():
     if current_user:
         return ctl.editar_informacoes()
     return redirect ('/')
+
+@app.route('/remover-argumentos', method='POST')
+def remover_argumentos():
+    return ctl.remover_argumentos()
 # -------------------------------------------------------------------
 
 if __name__ == '__main__':

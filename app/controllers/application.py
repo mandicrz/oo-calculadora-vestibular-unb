@@ -103,6 +103,7 @@ class Application():
 
         notaRedacao = float(request.forms.get('notaRedacao') or 0.0)
         lingua = request.forms.get('lingua')
+        print(request.forms.get('lingua'))
 
         calcEstg = self.vestibular.calcEstg(acertos_ta_estg, erros_ta_estg, acertos_tb_estg, acertos_tc_estg, erros_tc_estg, acertos_td_estg)
         calcP2 = self.vestibular.calcP2(acertos_ta_parte_2, erros_ta_parte_2, acertos_tb_parte_2, acertos_tc_parte_2, erros_tc_parte_2, acertos_td_parte_2)
@@ -198,4 +199,17 @@ class Application():
             else: 
                 return "Erro"
             
-  
+    def remover_argumentos(self, username):
+        for user in self.__user_accounts:
+            if user.username == username:
+                user.argGrupo1 = []
+                user.argGrupo2 = []
+                self.write()
+                break
+    
+    def remover_argumentos(self):
+        current_user = self.get_authenticated_user()
+        if current_user:
+            self._model.remover_argumentos(current_user)
+            return redirect('/editar-informacoes')
+        return redirect('/')

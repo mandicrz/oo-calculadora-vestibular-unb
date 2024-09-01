@@ -127,6 +127,21 @@
             </div>
             <button type="submit">Salvar Alterações</button>
         </form>
+        <h2 class="header-title">Argumentos Salvos</h2>
+        
+        <div class="form-group">
+            <label for="argGrupo1">Argumentos Grupo 1:</label>
+            <input type="text" id="argGrupo1" value="{{user.argGrupo1}}" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="argGrupo2">Argumentos Grupo 2:</label>
+            <input type="text" id="argGrupo2" value="{{user.argGrupo2}}" readonly>
+        </div>
+
+        <form action="/remover-argumentos" method="POST">
+            <button type="submit">Remover Argumentos</button>
+        </form>
     </div>
 </body>
 </html>

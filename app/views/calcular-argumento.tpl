@@ -6,7 +6,6 @@
     <title>Calcular Argumento Final</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    <script src="/static/js/index.js" defer></script>
     
 </head>
 <body>
@@ -53,7 +52,7 @@
                 <input type="number" name="acertos_td_estg" required>
                 
                 <label>Língua Estrangeira</label>
-                <select name="lingua_estrangeira">
+                <select name="lingua">
                     <option value="ingles">Inglês</option>
                     <option value="espanhol">Espanhol</option>
                     <option value="frances">Francês</option>
@@ -110,3 +109,6 @@
     </div>
         
     %end
+    <script src="/static/js/index.js"></script>
+</body>
+</html>
