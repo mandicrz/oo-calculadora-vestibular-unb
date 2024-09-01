@@ -107,7 +107,8 @@ class Vestibulando():
         self.notaRedacao = 0.0
 
     def passou(self,arg1,arg2,sistema):
-        if sistema =='universal':
+        i=21
+        if sistema =='Universal':
             i = 21
         elif sistema == 'Sistema de Cotas para Negros':
             i = 3
@@ -127,6 +128,7 @@ class Vestibulando():
             i = 17
         elif sistema == 'Publica renda >= 1.5 nao PPI e PCD':
             i = 19
+
         
         passou1 = []
         naoPassou1 = []
@@ -134,66 +136,39 @@ class Vestibulando():
         naoPassou2 = []
 
         for notas in self.vestibular.notaCorte:
-            if notas[i] == "-":
-                notas[i] = -9999
+            try:
+                if notas[i] == "-" or isinstance(notas[i], list):
+                    notas[i] = -9999
 
-            for grupo in self.vestibular.grupo:
-                if grupo[1] == notas[2]:
-                    if grupo[0] == 'I':
-                        if arg1 < float(notas[i]):
-                            if notas[i] == -9999:
-                                notas[i] == "-" 
-                            naoPassou1.append(notas)
+                for grupo in self.vestibular.grupo:
+                    if grupo[1] == notas[2]:
+                        if grupo[0] == 'I':
+                            if arg1 < float(notas[i]):
+                                if notas[i] == -9999:
+                                    notas[i] = "-"
+                                naoPassou1.append(notas)
+                            else:
+                                if notas[i] == -9999:
+                                    notas[i] = "-"
+                                passou1.append(notas)
                         else:
-                            if notas[i] == -9999:
-                                notas[i] == "-" 
-                            passou1.append(notas)
-                    else:
-                        if arg2 < float(notas[i]):
-                            if notas[i] == -9999:
-                                notas[i] == "-" 
-                            naoPassou2.append(notas)
-                        else:
-                            if notas[i] == -9999:
-                                notas[i] == "-" 
-                            passou2.append(notas)
+                            if arg2 < float(notas[i]):
+                                if notas[i] == -9999:
+                                    notas[i] = "-"
+                                naoPassou2.append(notas)
+                            else:
+                                if notas[i] == -9999:
+                                    notas[i] = "-"
+                                passou2.append(notas)
+            except (ValueError, TypeError) as e:
+                print(f"Erro ao processar o valor: {notas[i]} - {str(e)}")
+
         return passou2, passou1, naoPassou2, naoPassou1, i
 
 
-# cachorro = Vestibulando()
+cachorro = Vestibulando()
 
-# passouExatas, passouHumanas, naoPassouExatas, naoPassouHumanas = cachorro.passou(30,30,"universal")
 
-# print(passouExatas)
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print(passouHumanas)
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print(naoPassouHumanas)
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print("----")
-# print(naoPassouExatas)
-
-        
 
             
 

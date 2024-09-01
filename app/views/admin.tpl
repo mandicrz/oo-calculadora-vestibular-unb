@@ -23,7 +23,6 @@
             <td>{{ user.password }}</td>
             
             <td>
-                <!-- Edit Form -->
                 <form action="/admin/edit_user" method="post" style="display:inline;">
                     <input type="hidden" name="username" value="{{ user.username }}">
                     <input type="text" name="new_username" placeholder="New Username">
@@ -32,7 +31,6 @@
                     <button type="submit">Edit</button>
                 </form>
                 
-                <!-- Remove Form -->
                 <form action="/admin/remove_user" method="post" style="display:inline;">
                     <input type="hidden" name="username" value="{{ user.username }}">
                     <button type="submit">Remove</button>

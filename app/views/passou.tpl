@@ -36,7 +36,7 @@
     <div>
         <label>Sistema de disputa</label>
                 <select name="sistema">
-                    <option value="universal">universal</option>
+                    <option value="Universal">Universal</option>
                     <option value="Sistema de Cotas para Negros">Sistema de Cotas para Negros</option>
                     <option value="Publica renda <= 1.5 PPI">Publica renda <= 1.5 PPI</option>
                     <option value="Publica renda <= 1.5 PPI e PCD">Publica renda <= 1.5 PPI e PCD</option>
@@ -48,6 +48,17 @@
                     <option value="Publica renda >= 1.5 nao PPI e PCD">Publica renda >= 1.5 nao PPI e PCD</option>
                 </select>
     <div/>
+    % if transfered3:
+        <label>Selecione o argumento para comparar</label>
+                <select name="Argumentos Salvos ">
+                    % for arg1, arg2 in zip(argGrupo1, argGrupo2):
+                    <option value="universal">{{arg1}}/{{arg2}}</option>
+                    %end 
+
+                </select>
+    %else:
+        <p>Você não tem argumentos no sistema, vá para calcular argumento e depois volte aqui<p/>
+    %end
     % if transfered2:
     <div>
         <table class="tabela">
@@ -70,7 +81,7 @@
 
         <table class="tabela">
             <tr>
-                <th colspan="4">Nãp Passou Grupo 1</th>
+                <th colspan="4">Não Passou Grupo 1</th>
             </tr>
         % for notas in naoPassou1:
 
@@ -105,7 +116,7 @@
         
         <table class="tabela">
             <tr>
-                <th colspan="4">Nãp Passou Grupo 2</th>
+                <th colspan="4">Não Passou Grupo 2</th>
             </tr>
         % for notas in naoPassou2:
 

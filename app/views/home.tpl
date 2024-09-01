@@ -6,7 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    <script src="/static/js/index.js" defer></script>
+    
 </head>
 <body>
     <header class="header">
@@ -98,6 +98,6 @@
         </div>
     </main>
     %end
-
+    <script src="/static/js/index.js"></script>
 </body>
 </html>

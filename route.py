@@ -109,7 +109,10 @@ def home_page(username):
 def calcular_arg():
     current_user = ctl.get_authenticated_user()
     if current_user:
-        return template('app/views/calcular-argumento', resultado=None, resultado2=None, transfered=True, current_user=current_user)
+        return template('app/views/calcular-argumento',
+                        resultado=None, resultado2=None,
+                        transfered=True, 
+                        current_user=current_user)
 
 @app.route('/calcular-argumento', method= 'POST')
 def calcular():
@@ -117,7 +120,11 @@ def calcular():
     
     current_user = ctl.get_authenticated_user()
     if current_user:
-        return template('app/views/calcular-argumento', resultado=argumento_final_gp_1, resultado2=argumento_final_gp_2, transfered=True, current_user=current_user)
+        return template('app/views/calcular-argumento', 
+                        resultado=argumento_final_gp_1, 
+                        resultado2=argumento_final_gp_2, 
+                        transfered=True, 
+                        current_user=current_user)
     return redirect ('/')
 # -------------------------------------------------------------------
 @app.route('/notas-corte', method='GET')
@@ -130,14 +137,30 @@ def notas():
 def passou():
     current_user = ctl.get_authenticated_user()
     if current_user:
-        return template('app/views/passou', transfered=True, transfered2=False, current_user = current_user)
+        return ctl.passou()
     return redirect('/')
 
 @app.route('/passou', method='POST')
 def passou_post():
-    current_user = ctl.authenticate_user()
+    current_user = ctl.get_authenticated_user()
     if current_user:
         return ctl.passou()
+    return redirect('/')
+# -------------------------------------------------------------------
+@app.route('/editar-informacoes', method='GET')
+def editar_informacoes():
+    current_user = ctl.get_authenticated_user()
+    if current_user:
+        user = ctl._model.getCurrentUser(ctl.get_session_id())
+        return template('app/views/editar-informacoes', user=user, current_user=current_user)  
+    return redirect ('/')
+
+@app.route('/editar-informacoes', method='POST')
+def editar_informacoes():
+    current_user = ctl.get_authenticated_user()
+    if current_user:
+        return ctl.editar_informacoes()
+    return redirect ('/')
 # -------------------------------------------------------------------
 
 if __name__ == '__main__':

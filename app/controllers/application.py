@@ -11,7 +11,8 @@ class Application():
             'login': self.login,
             'calcular-argumento': self.calcular_argumento,
             'notas-corte': self.notas_corte,
-            'passou': self.passou
+            'passou': self.passou,
+            'editar-informacoes': self.editar_informacoes
         }
         
         self.vestibular = Vestibular()
@@ -71,10 +72,11 @@ class Application():
         if self.is_authenticated(username):
             session_id= self.get_session_id()
             user = self._model.getCurrentUser(session_id)
-            return template('app/views/home', \
-            transfered=True, current_user=user)
+            return template('app/views/home',
+            transfered=True,
+            current_user=user)
         else:
-            return template('app/views/home', \
+            return template('app/views/home',
             transfered=False)
         
     def calcular_argumento(self):
@@ -139,9 +141,57 @@ class Application():
         return redirect('/')
     
     def passou(self):
-        current_user = self.get_authenticated_user
+        current_user = self.get_authenticated_user()
         if current_user:
-            arg1, arg2 = None
+            argGrupo1, argGrupo2 = self._model.get_argumentos(current_user)
             sistema = request.forms.get('sistema')
-            passou2, passou1, naoPassou2, naoPassou1, i = self.vestibulando.passou(arg1,arg2,sistema)
-            return template('app/views/passou', transfered=True, transfered2= True, current_user=current_user, passou2 = passou2, passou1 = passou1, naoPassou2 = naoPassou2, naoPassou1 = naoPassou1,i= i)
+            
+            if argGrupo1 is None or argGrupo2 is None:
+                passou2, passou1, naoPassou2, naoPassou1, i = [], [], [], [], None
+                return template(
+                    'app/views/passou', 
+                    transfered=True, 
+                    transfered2=True, 
+                    transfered3=False, 
+                    current_user=current_user, 
+                    passou2=passou2, 
+                    passou1=passou1, 
+                    naoPassou2=naoPassou2, 
+                    naoPassou1=naoPassou1, 
+                    i=i, 
+                    argGrupo1=argGrupo1, 
+                    argGrupo2=argGrupo2
+                )
+            
+            passou2, passou1, naoPassou2, naoPassou1, i = self.vestibulando.passou(argGrupo1, argGrupo2, sistema)
+            return template(
+                'app/views/passou', 
+                transfered=True, 
+                transfered2=True, 
+                transfered3=True, 
+                current_user=current_user, 
+                passou2=passou2, 
+                passou1=passou1, 
+                naoPassou2=naoPassou2, 
+                naoPassou1=naoPassou1, 
+                i=i, 
+                argGrupo1=argGrupo1, 
+                argGrupo2=argGrupo2
+            )
+            
+    def editar_informacoes(self):
+        current_user = self.get_authenticated_user()
+        if current_user:
+            new_username = request.forms.get('new_username')
+            new_password = request.forms.get('new_password')
+            new_email = request.forms.get('new_email')
+            
+            updated = self.edit_user(current_user, new_username, new_password, new_email)
+            
+            
+            if updated:
+                return redirect(f'home/{new_username}')
+            else: 
+                return "Erro"
+            
+  

@@ -104,3 +104,10 @@ class DataRecord():
         self.write()
         
     
+    def get_argumentos(self, username):
+        for user in self.__user_accounts:
+            if user.username == username:
+                return user.argGrupo1, user.argGrupo2
+        return None, None
+    
+   

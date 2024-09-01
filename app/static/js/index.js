@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!darkModeToggle) {
         console.error('Elemento com ID #dark-mode-toggle não encontrado.');
-        return; // Interrompe a execução do script aqui.
+        return;
     }
 
     const currentMode = localStorage.getItem('darkMode') || 'light';
@@ -44,11 +44,16 @@ document.addEventListener("DOMContentLoaded", function() {
     faqQuestions.forEach((question) => {
         question.addEventListener("click", () => {
             const answer = question.nextElementSibling;
+            const arrow = question.querySelector(".arrow");
+
             answer.classList.toggle("active");
+
             if (answer.classList.contains("active")) {
                 answer.style.display = "block";
+                arrow.classList.add("rotated");
             } else {
                 answer.style.display = "none";
+                arrow.classList.remove("rotated");
             }
         });
     });
