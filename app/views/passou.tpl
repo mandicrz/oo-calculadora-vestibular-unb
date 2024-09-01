@@ -33,7 +33,7 @@
         </nav>
     </header>
 
-    <div>
+    <form action="/passou" method="POST">
         <label>Sistema de disputa</label>
                 <select name="sistema">
                     <option value="Universal">Universal</option>
@@ -47,18 +47,26 @@
                     <option value="Publica renda >= 1.5  nao PPI">Publica renda >= 1.5  nao PPI</option>
                     <option value="Publica renda >= 1.5 nao PPI e PCD">Publica renda >= 1.5 nao PPI e PCD</option>
                 </select>
-    <div/>
-    % if transfered3:
-        <label>Selecione o argumento para comparar</label>
-                <select name="Argumentos Salvos ">
-                    % for arg1, arg2 in zip(argGrupo1, argGrupo2):
-                    <option value="universal">{{arg1}}/{{arg2}}</option>
-                    %end 
+    
+        % if transfered3:
+            <label>Selecione o argumento para comparar</label>
+                    <select name="Argumentos_1_Salvos">
+                        % for arg1 in argGrupo1:
+                        <option value={{arg1}} type="number">{{arg1}}</option>
+                        %end 
+                    </select>
+                    <select name="Argumentos_2_Salvos">
+                        % for arg2 in argGrupo2:
+                        <option value={{arg2}} type="number">{{arg2}}</option>
+                        %end 
 
-                </select>
-    %else:
-        <p>Você não tem argumentos no sistema, vá para calcular argumento e depois volte aqui<p/>
-    %end
+                    </select>
+        %else:
+            <p>Você não tem argumentos no sistema, vá para calcular argumento e depois volte aqui<p/>
+        %end
+
+        <button type="submit">Verificar</button>
+    <form/>
     % if transfered2:
     <div>
         <table class="tabela">

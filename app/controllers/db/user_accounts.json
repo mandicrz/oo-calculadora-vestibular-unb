@@ -10,7 +10,13 @@
         "username": "romarinho",
         "password": "123",
         "email": "vasco@gmail.com",
-        "argGrupo1": [],
-        "argGrupo2": []
+        "argGrupo1": [
+            7796.205,
+            148.56
+        ],
+        "argGrupo2": [
+            5746.411,
+            126.278
+        ]
     }
 ]

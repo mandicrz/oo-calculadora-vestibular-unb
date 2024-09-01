@@ -139,7 +139,7 @@ class Vestibulando():
             try:
                 if notas[i] == "-" or isinstance(notas[i], list):
                     notas[i] = -9999
-
+    
                 for grupo in self.vestibular.grupo:
                     if grupo[1] == notas[2]:
                         if grupo[0] == 'I':
@@ -166,7 +166,6 @@ class Vestibulando():
         return passou2, passou1, naoPassou2, naoPassou1, i
 
 
-cachorro = Vestibulando()
 
 
 

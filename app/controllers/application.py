@@ -143,6 +143,10 @@ class Application():
     def passou(self):
         current_user = self.get_authenticated_user()
         if current_user:
+            print(request.forms.get('Argumentos_1_Salvos'))
+            print(request.forms.get('Argumentos_2_Salvos'))
+            argGrupo11 = float(request.forms.get('Argumentos_1_Salvos') or 0)
+            argGrupo22 = float(request.forms.get('Argumentos_2_Salvos') or 0)
             argGrupo1, argGrupo2 = self._model.get_argumentos(current_user)
             sistema = request.forms.get('sistema')
             
@@ -163,7 +167,7 @@ class Application():
                     argGrupo2=argGrupo2
                 )
             
-            passou2, passou1, naoPassou2, naoPassou1, i = self.vestibulando.passou(argGrupo1, argGrupo2, sistema)
+            passou2, passou1, naoPassou2, naoPassou1, i = self.vestibulando.passou(argGrupo11, argGrupo22, sistema)
             return template(
                 'app/views/passou', 
                 transfered=True, 
