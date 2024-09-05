@@ -57,27 +57,27 @@
             <section class="faq">
                 <h3 class="faq-title">dúvidas gerais</h3>
                 <div class="faq-item">
-                    <h4 class="faq-question">title
+                    <h4 class="faq-question">Dados
                     <span class="arrow">▼</span></h4>
-                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                    <p class="faq-answer">&numsp;&numsp;Este Software utiliza média e desvio padrão do vestibular de 2019, o ultimo ano em que a UnB divulgou esses números. Esses dados são utiliados para o calculo do argumento final, por isso, use o software apenas para uma estimativa. Já as notas de corte, são do vestibular de 2024, sendo o mais atual possivel.</p>
                 </div>
                 <div class="faq-item">
-                    <h4 class="faq-question">Title
+                    <h4 class="faq-question">Como utilizar o Software?
                         <span class="arrow">▼</span>
                     </h4>
-                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                    <p class="faq-answer">&numsp;&numsp;Primeiro acesse "Calcular Argumento Final" e obtenha seu argumento, em seguida vá até "Verificar se Passou" e obtenha a relação de cursos que passou. Caso queira apenas verificar a nota de corte do curso acesse "Notas de Corte"</p>
                 </div>
                 <div class="faq-item">
-                    <h4 class="faq-question">Title
+                    <h4 class="faq-question">Por que tem dois argumentos finais?
                         <span class="arrow">▼</span>
                     </h4>
-                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                    <p class="faq-answer">&numsp;&numsp;A UnB separa os cursos em dois grupos, sendo um mais voltado para humanas e licenciatura e outro para extas e biológicas. Portanto, para cada grupo há pesos diferentes em cada etapa da prova e por isso há dois argumentos.</p>
                 </div>
                 <div class="faq-item">
-                    <h4 class="faq-question">Title
+                    <h4 class="faq-question">Como verificar meu sistema de concorrência?
                         <span class="arrow">▼</span>
                     </h4>
-                    <p class="faq-answer">Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
+                    <p class="faq-answer">&numsp;&numsp;Para isso, você deve verificar se estuda em escola pública ou privada, se é PPI (Pessoas pretas, pardas e indígenas) e/ou PCD (Pessoa com Deficiência) e/ou a sua renda per capita é menor ou maior que 1.5 sálario mínimo.</p>
                 </div>
                 
                 

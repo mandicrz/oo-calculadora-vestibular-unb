@@ -6,7 +6,6 @@
     <title>Calcular Argumento Final</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap">
-    
 </head>
 <body>
     <header class="header">

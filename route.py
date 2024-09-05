@@ -19,7 +19,7 @@ def login():
     return ctl.render('login')
 
 @app.route('/', method='POST')
-def home_post():
+def login_post():
     action = request.forms.get('action')
     
     if action == 'login':

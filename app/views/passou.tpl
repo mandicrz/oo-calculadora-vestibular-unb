@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas de Corte</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/notas-corte.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/passou.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap"> 
 </head>
 <body>
@@ -63,13 +63,13 @@
             <p>Você não tem argumentos no sistema, vá para calcular argumento e depois volte aqui<p/>
         %end
 
-        <button type="submit">Verificar</button>
+        <button id="verificar" type="submit">Verificar</button>
     <form/>
     % if transfered2:
     <div>
         <table class="tabela">
             <tr>
-                <th colspan="4">Passou Grupo 1</th>
+                <th colspan="4">Aprovado | Grupo 1</th>
             </tr>
         % for notas in passou1:
 
@@ -87,7 +87,7 @@
 
         <table class="tabela">
             <tr>
-                <th colspan="4">Não Passou Grupo 1</th>
+                <th colspan="4">Reprovado | Grupo 1</th>
             </tr>
         % for notas in naoPassou1:
 
@@ -104,7 +104,7 @@
 
                 <table class="tabela">
             <tr>
-                <th colspan="4">Passou Grupo 2</th>
+                <th colspan="4">Aprovado | Grupo 2</th>
             </tr>
         % for notas in passou2:
 
@@ -122,7 +122,7 @@
         
         <table class="tabela">
             <tr>
-                <th colspan="4">Não Passou Grupo 2</th>
+                <th colspan="4">Reprovado | Grupo 2</th>
             </tr>
         % for notas in naoPassou2:
 
