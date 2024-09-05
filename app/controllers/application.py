@@ -1,5 +1,4 @@
 from app.controllers.dataRecord import DataRecord
-from app.controllers.vestibular import Vestibular
 from app.controllers.vestibular import Vestibulando
 from bottle import template, request, response, redirect
 class Application():
@@ -15,7 +14,6 @@ class Application():
             'editar-informacoes': self.editar_informacoes
         }
         
-        self.vestibular = Vestibular()
         self.vestibulando = Vestibulando()
         self._model= DataRecord()
         self._current_username = None
@@ -105,16 +103,16 @@ class Application():
         lingua = request.forms.get('lingua')
         print(request.forms.get('lingua'))
 
-        calcEstg = self.vestibular.calcEstg(acertos_ta_estg, erros_ta_estg, acertos_tb_estg, acertos_tc_estg, erros_tc_estg, acertos_td_estg)
-        calcP2 = self.vestibular.calcP2(acertos_ta_parte_2, erros_ta_parte_2, acertos_tb_parte_2, acertos_tc_parte_2, erros_tc_parte_2, acertos_td_parte_2)
-        calcP3 = self.vestibular.calcP3(acertos_ta_parte_3, erros_ta_parte_3, acertos_tb_parte_3, acertos_tc_parte_3, erros_tc_parte_3, acertos_td_parte_3)
+        calcEstg = self.vestibulando.vestibular.calcEstg(acertos_ta_estg, erros_ta_estg, acertos_tb_estg, acertos_tc_estg, erros_tc_estg, acertos_td_estg)
+        calcP2 = self.vestibulando.vestibular.calcP2(acertos_ta_parte_2, erros_ta_parte_2, acertos_tb_parte_2, acertos_tc_parte_2, erros_tc_parte_2, acertos_td_parte_2)
+        calcP3 = self.vestibulando.vestibular.calcP3(acertos_ta_parte_3, erros_ta_parte_3, acertos_tb_parte_3, acertos_tc_parte_3, erros_tc_parte_3, acertos_td_parte_3)
         
-        notaEstg = self.vestibular.argEstg(calcEstg, lingua)
-        notaP2 = self.vestibular.argP2(calcP2)
-        notaP3 = self.vestibular.argP3(calcP3)
-        notaRed = self.vestibular.argRed(notaRedacao)
+        notaEstg = self.vestibulando.vestibular.argEstg(calcEstg, lingua)
+        notaP2 = self.vestibulando.vestibular.argP2(calcP2)
+        notaP3 = self.vestibulando.vestibular.argP3(calcP3)
+        notaRed = self.vestibulando.vestibular.argRed(notaRedacao)
         
-        argumento_final_gp_1, argumento_final_gp_2 = self.vestibular.argFinal(notaEstg, notaP2, notaP3, notaRed)
+        argumento_final_gp_1, argumento_final_gp_2 = self.vestibulando.vestibular.argFinal(notaEstg, notaP2, notaP3, notaRed)
         
         argumento_final_gp_1 = round(argumento_final_gp_1, 3)
         argumento_final_gp_2 = round(argumento_final_gp_2, 3)
@@ -198,14 +196,6 @@ class Application():
                 return redirect(f'home/{new_username}')
             else: 
                 return "Erro"
-            
-    def remover_argumentos(self, username):
-        for user in self.__user_accounts:
-            if user.username == username:
-                user.argGrupo1 = []
-                user.argGrupo2 = []
-                self.write()
-                break
     
     def remover_argumentos(self):
         current_user = self.get_authenticated_user()

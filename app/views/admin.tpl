@@ -49,5 +49,8 @@
         <button type="submit">Add User</button>
     </form>
     
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>

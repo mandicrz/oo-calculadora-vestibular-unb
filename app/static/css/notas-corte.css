@@ -22,7 +22,7 @@ body.dark-mode {
 
 body {
     font-family: "Montagu Slab", serif;
-    /* background-color: var(--background-color); */
+    background-color: var(--background-color);
     color: var(--text-color); 
     margin: 0;
     padding: 0;
@@ -149,10 +149,11 @@ p {
 
 .tabela {
     width: 100%;
-    margin: 10px 0px;
+    margin: 0px 0px;
     font-size: 16px;
     text-align: center;
     border-collapse: collapse;
+    color: var(--text-color2);
 }
 
 .tabela th, .tabela td{
@@ -162,6 +163,7 @@ p {
 
 .tabela th {
     background-color: var(--header-color);
+    border: 1px solid var(--text-color2);
     color: var(--text-color);
 }
 
@@ -170,23 +172,5 @@ p {
 }
 
 .tabela tr:hover {
-    color: white;
+    color: var(--text-color);
 }
-
-
-/* .tabela, th, td{
-    border-collapse: collapse;
-    padding: 10px;
-    text-align: left;
-    border: 1px solid var(--itens);
-}
-th{
-    background-color: var(--tabela);
-    color: var(--texto-tabela);
-    text-align: center;
-}
-td{
-    text-align: center; 
-    background-color: var(--tabela);
-    color: var(--texto-tabela);
-} */

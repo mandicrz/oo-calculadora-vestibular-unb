@@ -110,4 +110,10 @@ class DataRecord():
                 return user.argGrupo1, user.argGrupo2
         return None, None
     
-   
+    def remover_argumentos(self, username):
+        for user in self.__user_accounts:
+            if user.username == username:
+                user.argGrupo1 = []
+                user.argGrupo2 = []
+                self.write()
+                break
